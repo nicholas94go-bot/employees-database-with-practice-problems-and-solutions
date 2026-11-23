@@ -1,4 +1,5 @@
 # test_db
+
 A sample database with an integrated test suite, used to test your applications and database servers
 
 This repository was migrated from [Launchpad](https://launchpad.net/test-db).
@@ -10,18 +11,17 @@ See usage in the [MySQL docs](https://dev.mysql.com/doc/employee/en/index.html)
 [![CI MariaDB](https://github.com/datacharmer/test_db/actions/workflows/ci-mariadb.yml/badge.svg)](https://github.com/datacharmer/test_db/actions/workflows/ci-mariadb.yml)
 [![CI PostgreSQL](https://github.com/datacharmer/test_db/actions/workflows/ci-postgresql.yml/badge.svg)](https://github.com/datacharmer/test_db/actions/workflows/ci-postgresql.yml)
 
-
 ## Tested Versions
 
 The database requires MySQL 5.0+ or PostgreSQL 12+. The following versions are tested in CI
 using [ProxySQL/dbdeployer](https://github.com/ProxySQL/dbdeployer) on a weekly schedule:
 
-| Vendor | Versions |
-|--------|----------|
-| MySQL | 5.6, 5.7, 8.0, 8.4, 9.0, 9.2, 9.5, 9.6 |
-| Percona Server | 8.0, 8.4 |
-| MariaDB | 10.11, 11.4, 12.1 |
-| PostgreSQL | 16, 17 |
+| Vendor         | Versions                               |
+| -------------- | -------------------------------------- |
+| MySQL          | 5.6, 5.7, 8.0, 8.4, 9.0, 9.2, 9.5, 9.6 |
+| Percona Server | 8.0, 8.4                               |
+| MariaDB        | 10.11, 11.4, 12.1                      |
+| PostgreSQL     | 16, 17                                 |
 
 ### MySQL 9.x Notes
 
@@ -37,17 +37,16 @@ Use `test_employees_sha2.sql` instead, which uses `SHA2(..., 256)` and is compat
 
 The SHA-256 checksums are identical across all supported MySQL, Percona, MariaDB, and PostgreSQL versions.
 
-
 ## Tested Versions
 
 The database requires MySQL 5.0+ or compatible server. The following versions are tested in CI
 using [ProxySQL/dbdeployer](https://github.com/ProxySQL/dbdeployer) on a weekly schedule:
 
-| Vendor | Versions |
-|--------|----------|
-| MySQL | 5.6, 5.7, 8.0, 8.4, 9.0, 9.2, 9.5, 9.6 |
-| Percona Server | 8.0, 8.4 |
-| MariaDB | 10.11, 11.4, 12.1 |
+| Vendor         | Versions                               |
+| -------------- | -------------------------------------- |
+| MySQL          | 5.6, 5.7, 8.0, 8.4, 9.0, 9.2, 9.5, 9.6 |
+| Percona Server | 8.0, 8.4                               |
+| MariaDB        | 10.11, 11.4, 12.1                      |
 
 ### MySQL 9.x Notes
 
@@ -63,17 +62,16 @@ Use `test_employees_sha2.sql` instead, which uses `SHA2(..., 256)` and is compat
 
 The SHA-256 checksums are identical across all supported MySQL, Percona, and MariaDB versions.
 
-
 ## Where it comes from
 
-The original data was created by Fusheng Wang and Carlo Zaniolo at 
+The original data was created by Fusheng Wang and Carlo Zaniolo at
 Siemens Corporate Research. The data is in XML format.
 http://timecenter.cs.aau.dk/software.htm
 
 Giuseppe Maxia made the relational schema and Patrick Crews exported
 the data in relational format.
 
-The database contains about 300,000 employee records with 2.8 million 
+The database contains about 300,000 employee records with 2.8 million
 salary entries. The export data is 167 MB, which is not huge, but
 heavy enough to be non-trivial for testing.
 
@@ -83,13 +81,13 @@ untouched, and use these issues as data cleaning exercises.
 
 ## Prerequisites
 
-You need a MySQL database server (5.0+) and run the commands below through a 
+You need a MySQL database server (5.0+) and run the commands below through a
 user that has the following privileges:
 
-    SELECT, INSERT, UPDATE, DELETE, 
-    CREATE, DROP, RELOAD, REFERENCES, 
-    INDEX, ALTER, SHOW DATABASES, 
-    CREATE TEMPORARY TABLES, 
+    SELECT, INSERT, UPDATE, DELETE,
+    CREATE, DROP, RELOAD, REFERENCES,
+    INDEX, ALTER, SHOW DATABASES,
+    CREATE TEMPORARY TABLES,
     LOCK TABLES, EXECUTE, CREATE VIEW
 
 ## Installation:
@@ -104,11 +102,9 @@ Then run
 
     mysql < employees.sql
 
-
 If you want to install with two large partitioned tables, run
 
     mysql < employees_partitioned.sql
-
 
 ## Testing the installation
 
@@ -157,6 +153,11 @@ For example:
     | salaries     | OK            | ok        |
     +--------------+---------------+-----------+
 
+## sample mySQL problems and solutions
+
+For a sample of practice problems in mySQL I have created and solved a few
+of them in [problems and solutions folder](./problems_and_solutions) and instructions of how to make
+use of available problems and their answers refer s[here](./problems_and_solutions/README.md)
 
 ## PostgreSQL Installation
 
@@ -180,16 +181,16 @@ PostgreSQL uses `encode(digest(..., 'sha256'), 'hex')` from the `pgcrypto` exten
 
 ### Installation
 
-1. Download the repository
-2. Install PostgreSQL (12+)
-3. Run the loading script:
+1.  Download the repository
+2.  Install PostgreSQL (12+)
+3.  Run the loading script:
 
-        cd postgresql
-        bash load_employees_db.sh
+         cd postgresql
+         bash load_employees_db.sh
 
-   To use a custom psql command (e.g., from a dbdeployer sandbox):
+    To use a custom psql command (e.g., from a dbdeployer sandbox):
 
-        PSQL=/path/to/psql bash load_employees_db.sh
+         PSQL=/path/to/psql bash load_employees_db.sh
 
 ### Testing the PostgreSQL installation
 
@@ -204,20 +205,17 @@ PostgreSQL uses `encode(digest(..., 'sha256'), 'hex')` from the `pgcrypto` exten
 Available functions: `emp_name()`, `emp_dept_name()`, `emp_dept_id()`, `current_manager()`,
 `show_departments()` (use `SELECT * FROM show_departments();`), `employees_help()`.
 
-
 ## DISCLAIMER
 
 To the best of my knowledge, this data is fabricated and
-it does not correspond to real people. 
+it does not correspond to real people.
 Any similarity to existing people is purely coincidental.
 
-
 ## LICENSE
-This work is licensed under the 
-Creative Commons Attribution-Share Alike 3.0 Unported License. 
-To view a copy of this license, visit 
-http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to 
-Creative Commons, 171 Second Street, Suite 300, San Francisco, 
+
+This work is licensed under the
+Creative Commons Attribution-Share Alike 3.0 Unported License.
+To view a copy of this license, visit
+http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to
+Creative Commons, 171 Second Street, Suite 300, San Francisco,
 California, 94105, USA.
-
-

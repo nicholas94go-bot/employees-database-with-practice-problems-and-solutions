@@ -156,8 +156,8 @@ For example:
 ## sample mySQL problems and solutions
 
 For a sample of practice problems in mySQL I have created and solved a few
-of them in [problems and solutions folder](./problems_and_solutions) and instructions of how to make
-use of available problems and their answers refer s[here](./problems_and_solutions/README.md)
+of them in [problems and solutions folder]("./problems_and_solutions") and instructions of how to make
+use of available problems and their answers refer s[here]("./problems_and_solutions/README.md")
 
 ## PostgreSQL Installation
 

@@ -24,7 +24,7 @@
 
 [see expected output](./images/14-solution.jpg)
 
-1. Identify the `emp_no` of all employees who have worked in more than one department over their career.
+15. Identify the `emp_no` of all employees who have worked in more than one department over their career.
 
 [see expected output](./images/15-solution.jpg)
 
